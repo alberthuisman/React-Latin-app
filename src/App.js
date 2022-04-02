@@ -1,10 +1,12 @@
 import './App.css';
 import Header from './components/Header';
-/*Ik geloof dat ik nu het bestand heb gecloned */
+import Maincomponent from './components/Maincomponent';
+
 function App() {
   return (
     <div className="App">
       <Header />
+      <Maincomponent />
     </div>
   );
 }
