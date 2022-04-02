@@ -1,5 +1,5 @@
 import './App.css';
-
+/*Ik geloof dat ik nu het bestand heb gecloned */
 function App() {
   return (
     <div className="App">
