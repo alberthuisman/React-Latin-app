@@ -23,6 +23,22 @@
     justify-content: space-between;
 }
 
-.maincomponent p {
-    border: solid 1px purple;
+.formGenerator {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    margin: 16px;
+    justify-content: space-around;
+    border: solid 1px orange;
+}
+
+.toBeAnalyzed {
+    font-weight: bold;
+}
+
+.getNounButton {
+    border-radius: 16px;
+    border: none;
+    background-color:orange;
+    padding: 8px 16px;
 }
