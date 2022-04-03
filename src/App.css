@@ -24,12 +24,12 @@
 }
 
 .formGenerator {
-    width: 300px;
+    width: 200px;
     display: flex;
-    flex-direction: row;
-    margin: 16px;
-    justify-content: space-around;
-    border: solid 1px orange;
+    flex-direction: column;
+    margin-top: 32px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .toBeAnalyzed {
