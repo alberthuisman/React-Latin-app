@@ -1,12 +1,15 @@
+import {useState} from 'react';
 import './App.css';
 import data from './Data';
 import Header from './components/Header';
 import Maincomponent from './components/Maincomponent';
 
+
 function App() {
   const nouns = data;
-  const cases = ["nom-sg", "gen-sg", "dat-sg", "acc-sg", "abl-sg", "nom-pl", "gen-pl", "dat-pl", "acc-pl", "abl-pl"];
-
+  const cases = ["nomSg", "genSg", "datSg", "accSg", "ablSg", "nomPl", "genPl", "datPl", "accPl", "ablPl"];
+  const [word, setWord] = useState("");
+  
   const getNoun=()=>{
     let nounIndex = Math.ceil(Math.random()*nouns.length-1);
     let noun = nouns[nounIndex];
@@ -17,12 +20,30 @@ function App() {
     console.log(naamval);
     console.log(noun['abl-pl']);
     questionField.innerHTML = noun[`${naamval}`];
+    setWord(noun);
   }
+
+  const checkNominative = () => {
+    let nomInput = document.getElementById("nomSG").value;
+    let correct = document.querySelector(".toBeAnalyzed").innerHTML;
+    console.log(nomInput);
+    console.log(correct);
+    console.log(word["nomSg"]);
+    if (nomInput === word["nomSg"]) {
+      console.log("correct");
+      document.getElementById("nomSG").classList.add("correctInput");
+      return true;
+    } else {
+      console.log("wrong!")
+      document.getElementById("nomSG").classList.remove("correctInput");
+      return false;
+    }
+}
 
   return (
     <div className="App">
       <Header />
-      <Maincomponent nouns={nouns} getNoun={getNoun}/>
+      <Maincomponent nouns={nouns} getNoun={getNoun} checkNominative={checkNominative}/>
     </div>
   );
 }
