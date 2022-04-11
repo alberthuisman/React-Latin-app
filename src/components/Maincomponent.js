@@ -12,11 +12,11 @@ export default function Maincomponent(props) {
         <form>
         <div className="nomSG response">
           <label for="nomSG">Nominative singular of this word:</label>
-          <input id="nomSG" type="text" placeholder="e.g. servus" onChange={props.checkNominative} className={props.checkNominative ? "correctInput" : "wrongInput"}/>
+          <input id="nomSG" type="text" placeholder="e.g. servus" onChange={props.checkNominative} />
         </div>
         <div className="declination response">
           <label for="declination">Declination:</label>
-          <select id="declination" name="declination">
+          <select id="declination" name="declination" onChange={props.checkDeclination}>
             <option value="1">Declination I (femina)</option>
             <option value="2">Declination II (servus/ bellum)</option>
             <option value="3">Declination III (rex/ flumen)</option>

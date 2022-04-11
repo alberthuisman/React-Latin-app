@@ -25,25 +25,38 @@ function App() {
 
   const checkNominative = () => {
     let nomInput = document.getElementById("nomSG").value;
-    let correct = document.querySelector(".toBeAnalyzed").innerHTML;
-    console.log(nomInput);
-    console.log(correct);
-    console.log(word["nomSg"]);
     if (nomInput === word["nomSg"]) {
       console.log("correct");
       document.getElementById("nomSG").classList.add("correctInput");
-      return true;
+      //return true;
     } else {
       console.log("wrong!")
       document.getElementById("nomSG").classList.remove("correctInput");
-      return false;
+      //return false;
     }
+}
+
+const checkDeclination = () => {
+  /* Do I have to cast it as an integer? Because in the if-statement comparing values with ===
+  doesn't give the correct result; probably because the types don't match */
+  let declination = document.getElementById("declination").value;
+  console.log(declination);
+  console.log(word["declination"]);
+  if (declination == word["declination"]) {
+    console.log("correct declination");
+    document.getElementById("declination").classList.add("correctInput");
+    return true;
+  } else {
+    console.log("wrong declination");
+    document.getElementById("declination").classList.remove("correctInput");
+    return false;
+  }
 }
 
   return (
     <div className="App">
       <Header />
-      <Maincomponent nouns={nouns} getNoun={getNoun} checkNominative={checkNominative}/>
+      <Maincomponent nouns={nouns} getNoun={getNoun} checkNominative={checkNominative} checkDeclination={checkDeclination}/>
     </div>
   );
 }
