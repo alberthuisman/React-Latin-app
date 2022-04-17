@@ -80,28 +80,293 @@ const checkCount = () => {
   console.log("calculated count = " + count);
   return count;
 }
+const checkCaseFirstDecl = (naamval, count) => {
+  if (naamval === "nomSg" || naamval === "ablSg") {
+    if (count === 2 && checkedState[0] === true && checkedState[4] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!")
+    }
+  }
+  else if (naamval === "datPl" || naamval === "ablPl") {
+    if (count === 2 && checkedState[7] === true && checkedState[9] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else {
+    if (count === 1 && checkedState.indexOf(true) === cases.indexOf(naamval)) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect!");
+    }
+  }
+  return false
+}
+
+const checkCaseSecondDeclM = (naamval, count) => {
+  if (naamval === "nomSg") {
+    if (count === 1 && checkedState[0] === true) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect");
+    }
+  } else if (naamval === "genSg" || naamval === "nomPl") {
+    if (count === 2 && checkedState[1] === true && checkedState[5] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "datSg" || naamval === "ablSg") {
+    if (count === 2 && checkedState[2] === true && checkedState[4] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "datPl" || naamval === "ablPl") {
+    if (count === 2 && checkedState[7] === true && checkedState[9] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else {
+    if (count === 1 && checkedState.indexOf(true) === cases.indexOf(naamval)) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect!");
+    }
+  }
+  return false
+}
+
+const checkCaseSecondDeclN = (naamval, count) => {
+  if (naamval === "nomSg" || naamval === "accSg") {
+    if (count === 2 && checkedState[0] === true && checkedState[3] === true) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect");
+    }
+  } else if (naamval === "datSg" || naamval === "ablSg") {
+    if (count === 2 && checkedState[2] === true && checkedState[4] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "nomPl" || naamval === "accPl") {
+    if (count === 2 && checkedState[5] === true && checkedState[8] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "datPl" || naamval === "ablPl") {
+    if (count === 2 && checkedState[7] === true && checkedState[9] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else {
+    if (count === 1 && checkedState.indexOf(true) === cases.indexOf(naamval)) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect!");
+    }
+  }
+  return false
+}
+
+const checkCaseThirdDeclN = (naamval, count) => {
+  if (naamval === "nomSg" || naamval === "accSg") {
+    if (count === 2 && checkedState[0] === true && checkedState[3] === true) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect");
+    }
+  } else if (naamval === "nomPl" || naamval === "accPl") {
+    if (count === 2 && checkedState[5] === true && checkedState[8] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "datPl" || naamval === "ablPl") {
+    if (count === 2 && checkedState[7] === true && checkedState[9] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else {
+    if (count === 1 && checkedState.indexOf(true) === cases.indexOf(naamval)) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect!");
+    }
+  }
+  return false
+}
+
+const checkCaseThirdDeclMF = (naamval, count) => {
+  if (naamval === "nomSg" && word["nomSg"] === word["genSg"]) {
+    if (count === 2 && checkedState[0] === true && checkedState[1] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete");
+    }
+  } else if (naamval === "nomPl" || naamval === "accPl") {
+    if (count === 2 && checkedState[5] === true && checkedState[8] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "datPl" || naamval === "ablPl") {
+    if (count === 2 && checkedState[7] === true && checkedState[9] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else {
+    if (count === 1 && checkedState.indexOf(true) === cases.indexOf(naamval)) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect!");
+    }
+  }
+  return false
+}
+
+const checkCaseFourthDeclN = (naamval, count) => {
+  if (naamval === "nomSg" || naamval === "accSg" || naamval === "ablSg") {
+    if (count === 3 && checkedState[0] === true && checkedState[3] === true && checkedState[4] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "nomPl" || naamval === "accPl") {
+    if (count === 2 && checkedState[5] === true && checkedState[8] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "datPl" || naamval === "ablPl") {
+    if (count === 2 && checkedState[7] === true && checkedState[9] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else {
+    if (count === 1 && checkedState.indexOf(true) === cases.indexOf(naamval)) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect!");
+    }
+  }
+  return false
+}
+
+const checkCaseFourthDeclMF = (naamval, count) => {
+  if (naamval === "nomSg" || naamval === "genSg" || naamval === "nomPl" || naamval === "accPl") {
+    if (count === 4 && checkedState[0] === true && checkedState[1] === true && checkedState[5] === true && checkedState[8] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "datPl" || naamval === "ablPl") {
+    if (count === 2 && checkedState[7] === true && checkedState[9] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else {
+    if (count === 1 && checkedState.indexOf(true) === cases.indexOf(naamval)) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect!");
+    }
+  }
+  return false
+}
+
+const checkCaseFifthDecl = (naamval, count) => {
+  if (naamval === "nomSg" || naamval === "nomPl" || naamval === "accPl") {
+    if (count === 3 && checkedState[0] === true && checkedState[5] === true && checkedState[8] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "genSg" || naamval === "datSg") {
+    if (count === 2 && checkedState[1] === true & checkedState[2] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "datPl" || naamval === "ablPl") {
+    if (count === 2 && checkedState[7] === true && checkedState[9] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else {
+    if (count === 1 && checkedState.indexOf(true) === cases.indexOf(naamval)) {
+      console.log("case correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect!");
+    }
+  }
+  return false
+}
 
 const checkCase = () => {
   let countedCases = checkCount();
   console.log("declination = " + word["declination"]);
   console.log(naamval);
   if (word["declination"] == 1) {
-    if (naamval === "nomSg" || naamval === "ablSg") {
-      if (countedCases === 2 && checkedState[0] === true && checkedState[4] === true) {
-        console.log("cases correctly analyzed");
-      } else {
-        console.log("answer is incorrect or incomplete!")
-      }
-    }
-    else if (naamval === "datPl" || naamval === "ablPl") {
-      if (countedCases === 2 && checkedState[7] === true && checkedState[9] === true) {
-        console.log("cases correctly analyzed");
-      } else {
-        console.log("answer is incorrect or incomplete!");
-      }
-    }
-
+    checkCaseFirstDecl(naamval, countedCases);
+  } else if (word["declination"] == 2 && word["gender"] === "M") {
+    checkCaseSecondDeclM(naamval, countedCases);
+  } else if (word["declination"] == 2 && word["gender"] === "N") {
+    checkCaseSecondDeclN(naamval, countedCases); 
+  } else if (word["declination"] == 3 && word["gender"] === "N") {
+    checkCaseThirdDeclN(naamval, countedCases);
+  } else if (word["declination"] == 3) {
+    checkCaseThirdDeclMF(naamval, countedCases);
+  } else if (word["declination"] == 4 && word["gender"] === "N") {
+    checkCaseFourthDeclN(naamval, countedCases);
+  } else if (word["declination"] == 4) {
+    checkCaseFourthDeclMF(naamval, countedCases);
+  } else if (word["declination"] == 5) {
+    checkCaseFifthDecl(naamval, countedCases);
   }
+    else return false;
 }
 
 /*const checkNumber = () => {
