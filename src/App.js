@@ -10,8 +10,11 @@ function App() {
   const cases = ["nomSg", "genSg", "datSg", "accSg", "ablSg", "nomPl", "genPl", "datPl", "accPl", "ablPl"];
   const [word, setWord] = useState("");
   const [naamval, setNaamval] = useState("");
+  const [correct, setCorrect] = useState([]);
+  let counter = 0;
   
   const getNoun=()=>{
+    clearFields();
     let nounIndex = Math.ceil(Math.random()*nouns.length-1);
     let noun = nouns[nounIndex];
     let caseIndex = Math.ceil(Math.random()*9);
@@ -20,9 +23,25 @@ function App() {
     console.log(noun[`${naamval}`]);
     console.log(naamval);
     console.log(noun['ablPl']);
-    questionField.innerHTML = noun[`${naamval}`];
-    setWord(noun);
-    setNaamval(naamval);
+    if (!correct.includes(noun[`${naamval}`])) {
+      questionField.innerHTML = noun[`${naamval}`];
+      setWord(noun);
+      setNaamval(naamval);
+    } else {
+      if (counter < 30) {
+        counter++;
+        getNoun();
+      } else {
+        console.log("Out of exercises!")
+      }
+    }
+  }
+
+  const clearFields = () => {
+    document.querySelector(".toBeAnalyzed").innerHTML = "";
+    document.getElementById("nomSG").value = "";
+    document.getElementById("declination").value = "0";
+    setCheckedState(checkedState.fill(false));
   }
 
   const checkNominative = () => {
@@ -30,11 +49,11 @@ function App() {
     if (nomInput === word["nomSg"]) {
       console.log("correct");
       document.getElementById("nomSG").classList.add("correctInput");
-      //return true;
+      return true;
     } else {
       console.log("wrong!")
       document.getElementById("nomSG").classList.remove("correctInput");
-      //return false;
+      return false;
     }
 }
 
@@ -369,31 +388,15 @@ const checkCase = () => {
     else return false;
 }
 
-/*const checkNumber = () => {
-  let numberInput = document.getElementById("number").value;
-  console.log(numberInput);
-  console.log(Object.values(word));
-  let number;
-  let index;
-  for(let i=3; i < word.length; i++) {
-    if (Object.values(word)[i] === question) {
-      index = i;
-      console.log("index = " + index);
-    }
-  }
-  if (index >= 3 && index <= 7) {
-    number = "sg";
+const checkAnswer = () => {
+  if (checkNominative && checkDeclination && checkCase) {
+    console.log("Congratulations!!!");
+    setCorrect([...correct, word[naamval]]);
+    console.log(correct);
   } else {
-    number = "pl";
+    console.log("Not quite...");
   }
-  if (numberInput === number) {
-    console.log("correct")
-    document.getElementById("number").classList.add("correctInput");
-  } else {
-    console.log("wrong!");
-    document.getElementById("number").classList.remove("correctInput");
-  }
-}*/
+}
 
   return (
     <div className="App">
@@ -405,7 +408,8 @@ const checkCase = () => {
                      checkedState={checkedState}
                      handleOnChange={handleOnChange}
                      checkCount = {checkCount} 
-                     checkCase={checkCase}/>
+                     checkCase={checkCase}
+                     checkAnswer={checkAnswer}/>
     </div>
   );
 }
