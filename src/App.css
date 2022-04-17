@@ -21,11 +21,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    border: solid 1px purple;
 }
 
-.formGenerator {
-    width: 200px;
+h4 {
+    font-weight: normal;
+}
+
+.wordGenerator {
+    width: 55%;
     display: flex;
     flex-direction: column;
     margin: 32px auto auto auto;
@@ -33,10 +36,17 @@
     align-items: center;
 }
 
+.scorePlusNewBtn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .toBeAnalyzed {
     font-weight: bold;
     height: 20px;
-    border: solid 1px purple;
     margin: 32px auto 0 auto;
 }
 
@@ -54,10 +64,14 @@ form {
     justify-content: space-evenly;
     margin-top: 16px;
     min-height: 200px;
-    width: 50%;
-    border: solid 1px purple;
+    width: 55%;
 }
 
+#nomSG {
+    padding: 4px 4px;
+    border-radius: 8px;
+    border: 0.5px solid orange;
+}
 .case {
     display: flex;
     flex-direction: column;
@@ -66,8 +80,28 @@ form {
 .response {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin: 8px 0;
+    padding: 4px 0;
 }
 
+p {
+    margin: 0px;
+}
+
+.casesList {
+    margin: 8px 0;
+}
+
+.naamvallen {
+    padding: 4px 0;
+}
+
+#declination {
+    padding: 4px 0;
+    border-radius: 8px;
+    border: 0.5px solid orange;
+}
 .correctInput {
     color: green;
     font-weight: bold;
@@ -75,4 +109,9 @@ form {
 
 .wrongInput {
     color: black;
+}
+
+#result {
+    height: 16px;
+    font-style: italic;
 }

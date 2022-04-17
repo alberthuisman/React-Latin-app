@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import './App.css';
 import data from './Data';
 import Header from './components/Header';
@@ -11,6 +11,8 @@ function App() {
   const [word, setWord] = useState("");
   const [naamval, setNaamval] = useState("");
   const [correct, setCorrect] = useState([]);
+  const [correctNR, setCorrectNR] = useState(0);
+  const [total, setTotal] = useState(0);
   let counter = 0;
   
   const getNoun=()=>{
@@ -41,7 +43,9 @@ function App() {
     document.querySelector(".toBeAnalyzed").innerHTML = "";
     document.getElementById("nomSG").value = "";
     document.getElementById("declination").value = "0";
+    document.getElementById("declination").classList.remove("correctInput");
     setCheckedState(checkedState.fill(false));
+    document.getElementById("result").innerHTML = "";
   }
 
   const checkNominative = () => {
@@ -107,8 +111,14 @@ const checkCaseFirstDecl = (naamval, count) => {
     } else {
       console.log("answer is incorrect or incomplete!")
     }
-  }
-  else if (naamval === "datPl" || naamval === "ablPl") {
+  } else if (naamval === "genSg" || naamval === "datSg" || naamval === "nomPl") {
+    if (count === 3 && checkedState[1] === true && checkedState[2] === true && checkedState[5] === true) {
+      console.log("cases correctly analyzed");
+      return true;
+    } else {
+      console.log("answer is incorrect or incomplete!");
+    }
+  } else if (naamval === "datPl" || naamval === "ablPl") {
     if (count === 2 && checkedState[7] === true && checkedState[9] === true) {
       console.log("cases correctly analyzed");
       return true;
@@ -369,32 +379,43 @@ const checkCase = () => {
   console.log("declination = " + word["declination"]);
   console.log(naamval);
   if (word["declination"] == 1) {
-    checkCaseFirstDecl(naamval, countedCases);
+    return checkCaseFirstDecl(naamval, countedCases);
   } else if (word["declination"] == 2 && word["gender"] === "M") {
-    checkCaseSecondDeclM(naamval, countedCases);
+    return checkCaseSecondDeclM(naamval, countedCases);
   } else if (word["declination"] == 2 && word["gender"] === "N") {
-    checkCaseSecondDeclN(naamval, countedCases); 
+    return checkCaseSecondDeclN(naamval, countedCases); 
   } else if (word["declination"] == 3 && word["gender"] === "N") {
-    checkCaseThirdDeclN(naamval, countedCases);
+    return checkCaseThirdDeclN(naamval, countedCases);
   } else if (word["declination"] == 3) {
-    checkCaseThirdDeclMF(naamval, countedCases);
+    return checkCaseThirdDeclMF(naamval, countedCases);
   } else if (word["declination"] == 4 && word["gender"] === "N") {
-    checkCaseFourthDeclN(naamval, countedCases);
+    return checkCaseFourthDeclN(naamval, countedCases);
   } else if (word["declination"] == 4) {
-    checkCaseFourthDeclMF(naamval, countedCases);
+    return checkCaseFourthDeclMF(naamval, countedCases);
   } else if (word["declination"] == 5) {
-    checkCaseFifthDecl(naamval, countedCases);
+    return checkCaseFifthDecl(naamval, countedCases);
   }
     else return false;
 }
 
+useEffect(() => {
+  document.getElementById("correctNR").innerHTML = correctNR;
+  document.getElementById("total").innerHTML = total;
+  console.log(correct);
+}, [correct, correctNR, total]);
+
 const checkAnswer = () => {
-  if (checkNominative && checkDeclination && checkCase) {
+  if (checkNominative() && checkDeclination() && checkCase()) {
     console.log("Congratulations!!!");
     setCorrect([...correct, word[naamval]]);
     console.log(correct);
+    setCorrectNR(correctNR + 1)
+    setTotal(total + 1);
+    document.getElementById("result").innerHTML = "Well done!"
   } else {
     console.log("Not quite...");
+    setTotal(total + 1);
+    document.getElementById("result").innerHTML = "Not quite..."
   }
 }
 
@@ -409,7 +430,7 @@ const checkAnswer = () => {
                      handleOnChange={handleOnChange}
                      checkCount = {checkCount} 
                      checkCase={checkCase}
-                     checkAnswer={checkAnswer}/>
+                     checkAnswer={checkAnswer} />
     </div>
   );
 }

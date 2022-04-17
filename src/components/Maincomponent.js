@@ -16,8 +16,11 @@ export default function Maincomponent(props) {
 
   return (
     <div className="maincomponent">
-        <div className="formGenerator">
+        <div className="wordGenerator">
+          <div className="scorePlusNewBtn">
             <button onClick={props.getNoun} className="getNounButton">New Noun</button>
+            <h4>correct/total: <span id="correctNR">0</span> / <span id="total">0</span></h4>
+            </div>
             <p className="toBeAnalyzed"></p>
         </div>
         <form>
@@ -36,13 +39,13 @@ export default function Maincomponent(props) {
             <option value="5">Declination V (res)</option>
           </select>
           </div>
-          <div className="case response">
+          <div className="case">
           <p>Select case and grammatical number:</p> 
           <p><em>(select all possible options!)</em></p>
           <div className="casesList">
             {casesFull.map((item, index) => {
               return(
-                <div className="case#">
+                <div className="naamvallen">
                   <input
                   type="checkbox"
                   id={`custom-checkbox-${index}`}
@@ -51,7 +54,7 @@ export default function Maincomponent(props) {
                   checked={props.checkedState[index]}
                   onChange={() => {props.handleOnChange(index)}}
                   />
-                  <label htmlFor={`custom-checkbox-${index}`}>{item}</label>
+                  <label id="caseLabel" htmlFor={`custom-checkbox-${index}`}>{item}</label>
                   </div>
               )
 
@@ -61,6 +64,7 @@ export default function Maincomponent(props) {
           </div>
 
         </form>
+        <h4 id="result"> </h4>
         <button onClick={props.checkAnswer} className="checkAnswerButton">Check answer</button>
     </div>
   )
