@@ -28,6 +28,7 @@ export default function Maincomponent(props) {
         <div className="declination response">
           <label for="declination">Declination:</label>
           <select id="declination" name="declination" onChange={props.checkDeclination}>
+            <option value="0">--</option>
             <option value="1">Declination I (femina)</option>
             <option value="2">Declination II (servus/ bellum)</option>
             <option value="3">Declination III (rex/ flumen)</option>
@@ -56,11 +57,11 @@ export default function Maincomponent(props) {
 
             })}
           </div>
-          
+
           </div>
 
         </form>
-        <button onClick={props.checkCase} className="checkAnswerButton">Check answer</button>
+        <button onClick={props.checkAnswer} className="checkAnswerButton">Check answer</button>
     </div>
   )
 }

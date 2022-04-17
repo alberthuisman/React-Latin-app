@@ -58,6 +58,51 @@ let data = [
         "datPl": "militibus",
         "accPl": "milites",
         "ablPl": "militibus"
+    },
+    {
+        "id": 5,
+        "declination": 4,
+        "gender": "M",
+        "nomSg": "fructus",
+        "genSg": "fructus",
+        "datSg": "fructui",
+        "accSg": "fructum",
+        "ablSg": "fructu",
+        "nomPl": "fructus",
+        "genPl": "fructuum",
+        "datPl": "fructibus",
+        "accPl": "fructus",
+        "ablPl": "fructibus"
+    },
+    {
+        "id": 6,
+        "declination": 4,
+        "gender": "N",
+        "nomSg": "cornu",
+        "genSg": "cornus",
+        "datSg": "cornui",
+        "accSg": "cornu",
+        "ablSg": "cornu",
+        "nomPl": "cornua",
+        "genPl": "cornuum",
+        "datPl": "cornibus",
+        "accPl": "cornua",
+        "ablPl": "cornibus"
+    },
+    {
+        "id": 7,
+        "declination": 5,
+        "gender": "F",
+        "nomSg": "res",
+        "genSg": "rei",
+        "datSg": "rei",
+        "accSg": "rem",
+        "ablSg": "re",
+        "nomPl": "res",
+        "genPl": "rerum",
+        "datPl": "rebus",
+        "accPl": "res",
+        "ablPl": "rebus"
     }
 ]
 
