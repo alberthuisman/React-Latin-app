@@ -36,7 +36,8 @@ export default function Maincomponent(props) {
           </select>
           </div>
           <div className="case response">
-          <p>Select case and grammatical number (all possibilities!):</p>
+          <p>Select case and grammatical number:</p> 
+          <p><em>(select all possible options!)</em></p>
           <div className="casesList">
             {casesFull.map((item, index) => {
               return(
@@ -47,7 +48,7 @@ export default function Maincomponent(props) {
                   name={item}
                   value={item}
                   checked={props.checkedState[index]}
-                  onChange={() => {props.handleOnChange(index); props.checkCase()}}
+                  onChange={() => {props.handleOnChange(index)}}
                   />
                   <label htmlFor={`custom-checkbox-${index}`}>{item}</label>
                   </div>
@@ -55,39 +56,11 @@ export default function Maincomponent(props) {
 
             })}
           </div>
-          {/* <label for="case1">
-            <input type="checkbox" name="case" value="nomSG" id="case1"/>Nominative singular
-          </label>
-          <label for="case2">
-            <input type="checkbox" name="case" value="genSG" id="case2"/>Genitive singular
-          </label>
-          <label for="case3">
-            <input type="checkbox" name="case" value="datSG" id="case3"/>Dative singular
-          </label>
-          <label for="case4">
-            <input type="checkbox" name="case" value="accSG" id="case4"/>Accusative singular
-          </label>
-          <label for="case5">
-            <input type="checkbox" name="case" value="ablSG" id="case5"/>Ablative singular
-          </label>
-          <label for="case6">
-            <input type="checkbox" name="case" value="nomPL" id="case6"/>Nominative plural
-          </label>
-          <label for="case7">
-            <input type="checkbox" name="case" value="genPL" id="case7"/>Genitive plural
-          </label>
-          <label for="case8">
-            <input type="checkbox" name="case" value="datPL" id="case8"/>Dative plural
-          </label>
-          <label for="case9">
-            <input type="checkbox" name="case" value="accPL" id="case9">Accusative plural</input>
-          </label>
-          <label for="case10">
-            <input type="checkbox" name="case" value="ablPL" id="case10">Ablative plural</input>
-  </label>  */}
+          
           </div>
 
         </form>
+        <button onClick={props.checkCase} className="checkAnswerButton">Check answer</button>
     </div>
   )
 }

@@ -64,38 +64,37 @@ const [checkedCount, setCheckedCount] = useState(0);
 const handleOnChange = (position) => {
   let updatedCheckedState = checkedState.map((item, index) => index === position ? !item : item);
   setCheckedState(updatedCheckedState);
-  let count = checkedCount;
-  for (let i = 0; i < updatedCheckedState.length; i++) {
-    if (updatedCheckedState[i] === true) {
-      count++
-      setCheckedCount(count);
-    }
-  }
-  console.log(updatedCheckedState)
-  console.log("checked Count = " + checkedCount);
+  console.log(updatedCheckedState);
 };
 
-const checkCase = () => {
-  /*let count = 0;
+const checkCount = () => {
+  console.log("Current selected cases: " + checkedState)
+  let count = 0;
   for (let i = 0; i < checkedState.length; i++) {
     if (checkedState[i] === true) {
       count++
-    }
+    }  
   }
-  setCheckedCount(count);*/
-  console.log("count = " + checkedCount);
+  setCheckedCount(count);
+  console.log("checked Count = " + checkedCount);
+  console.log("calculated count = " + count);
+  return count;
+}
+
+const checkCase = () => {
+  let countedCases = checkCount();
   console.log("declination = " + word["declination"]);
   console.log(naamval);
   if (word["declination"] == 1) {
     if (naamval === "nomSg" || naamval === "ablSg") {
-      if (checkedCount === 2 && checkedState[0] === true && checkedState[4] === true) {
+      if (countedCases === 2 && checkedState[0] === true && checkedState[4] === true) {
         console.log("cases correctly analyzed");
       } else {
         console.log("answer is incorrect or incomplete!")
       }
     }
     else if (naamval === "datPl" || naamval === "ablPl") {
-      if (checkedCount === 2 && checkedState[7] === true && checkedState[9] === true) {
+      if (countedCases === 2 && checkedState[7] === true && checkedState[9] === true) {
         console.log("cases correctly analyzed");
       } else {
         console.log("answer is incorrect or incomplete!");
@@ -139,7 +138,8 @@ const checkCase = () => {
                      checkNominative={checkNominative} 
                      checkDeclination={checkDeclination}
                      checkedState={checkedState}
-                     handleOnChange={handleOnChange} 
+                     handleOnChange={handleOnChange}
+                     checkCount = {checkCount} 
                      checkCase={checkCase}/>
     </div>
   );
