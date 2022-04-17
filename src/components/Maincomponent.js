@@ -1,6 +1,17 @@
 import React from 'react'
 
 export default function Maincomponent(props) {
+  const casesFull=[
+              "nominative singular",
+              "genitive singular",
+              "dative singular",
+              "accusative singular",
+              "ablative singular",
+              "nominative plural",
+              "genitive plural",
+              "dative plural",
+              "accusative plural",
+              "ablative plural"];
   
 
   return (
@@ -24,22 +35,56 @@ export default function Maincomponent(props) {
             <option value="5">Declination V (res)</option>
           </select>
           </div>
-          <div className="number response">
-          <label for="number">Grammatical number:</label>
-          <select id="number" name="number">
-            <option value="sg">singular</option>
-            <option value="pl">plural</option>
-          </select>
-          </div>
           <div className="case response">
-          <label for="case">Case:</label>
-          <select id="case" name="case">
-            <option value="nom">nominative</option>
-            <option value="gen">genitive</option>
-            <option value="dat">dative</option>
-            <option value="acc">accusative</option>
-            <option value="abl">ablative</option>
-          </select>
+          <p>Select case and grammatical number (all possibilities!):</p>
+          <div className="casesList">
+            {casesFull.map((item, index) => {
+              return(
+                <div className="case#">
+                  <input
+                  type="checkbox"
+                  id={`custom-checkbox-${index}`}
+                  name={item}
+                  value={item}
+                  checked={props.checkedState[index]}
+                  onChange={() => {props.handleOnChange(index); props.checkCase()}}
+                  />
+                  <label htmlFor={`custom-checkbox-${index}`}>{item}</label>
+                  </div>
+              )
+
+            })}
+          </div>
+          {/* <label for="case1">
+            <input type="checkbox" name="case" value="nomSG" id="case1"/>Nominative singular
+          </label>
+          <label for="case2">
+            <input type="checkbox" name="case" value="genSG" id="case2"/>Genitive singular
+          </label>
+          <label for="case3">
+            <input type="checkbox" name="case" value="datSG" id="case3"/>Dative singular
+          </label>
+          <label for="case4">
+            <input type="checkbox" name="case" value="accSG" id="case4"/>Accusative singular
+          </label>
+          <label for="case5">
+            <input type="checkbox" name="case" value="ablSG" id="case5"/>Ablative singular
+          </label>
+          <label for="case6">
+            <input type="checkbox" name="case" value="nomPL" id="case6"/>Nominative plural
+          </label>
+          <label for="case7">
+            <input type="checkbox" name="case" value="genPL" id="case7"/>Genitive plural
+          </label>
+          <label for="case8">
+            <input type="checkbox" name="case" value="datPL" id="case8"/>Dative plural
+          </label>
+          <label for="case9">
+            <input type="checkbox" name="case" value="accPL" id="case9">Accusative plural</input>
+          </label>
+          <label for="case10">
+            <input type="checkbox" name="case" value="ablPL" id="case10">Ablative plural</input>
+  </label>  */}
           </div>
 
         </form>
