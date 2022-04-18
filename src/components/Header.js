@@ -1,3 +1,5 @@
+/* Component to build the header of the app */ 
+
 import React from 'react'
 
 export default function Header() {

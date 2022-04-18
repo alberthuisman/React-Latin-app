@@ -72,6 +72,7 @@ form {
     border-radius: 8px;
     border: 0.5px solid orange;
 }
+
 .case {
     display: flex;
     flex-direction: column;
@@ -102,16 +103,22 @@ p {
     border-radius: 8px;
     border: 0.5px solid orange;
 }
+
 .correctInput {
     color: green;
     font-weight: bold;
 }
 
 .wrongInput {
-    color: black;
+    color: red;
+    font-weight: bold;
 }
 
 #result {
     height: 16px;
     font-style: italic;
+}
+
+#correctNR {
+    color: green;
 }

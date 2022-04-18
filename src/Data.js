@@ -1,3 +1,8 @@
+/* List of Latin words with their complete declension, 
+their declination-type and their gender. 
+The app will pick a random word from this list and a random form from that word 
+that has to be analyzed by the user */
+
 let data = [
     {
         "id": 0,
@@ -103,6 +108,21 @@ let data = [
         "datPl": "rebus",
         "accPl": "res",
         "ablPl": "rebus"
+    },
+    {
+        "id": 8,
+        "declination": 3,
+        "gender": "M",
+        "nomSg": "civis",
+        "genSg": "civis",
+        "datSg": "civi",
+        "accSg": "civem",
+        "ablSg": "cive",
+        "nomPl": "cives",
+        "genPl": "civium",
+        "datPl": "civibus",
+        "accPl": "cives",
+        "ablPl": "civibus"
     }
 ]
 

@@ -6,25 +6,29 @@ import Maincomponent from './components/Maincomponent';
 
 
 function App() {
-  const nouns = data;
+  const nouns = data; //the list of words to be analyzed
   const cases = ["nomSg", "genSg", "datSg", "accSg", "ablSg", "nomPl", "genPl", "datPl", "accPl", "ablPl"];
-  const [word, setWord] = useState("");
-  const [naamval, setNaamval] = useState("");
-  const [correct, setCorrect] = useState([]);
-  const [correctNR, setCorrectNR] = useState(0);
-  const [total, setTotal] = useState(0);
-  let counter = 0;
+  const [word, setWord] = useState(""); //state to keep track of the chosen word out of the list of words
+  const [naamval, setNaamval] = useState(""); //state to keep track of the specific selected form of the word
+  const [correct, setCorrect] = useState([]); //state to keep track of the correctly analyzed forms
+  const [correctNR, setCorrectNR] = useState(0); //state to keep track of the number of correctly analyzed forms 
+  const [total, setTotal] = useState(0); //state to keep track of number of attempts
+  let counter = 0; //variable used to prevent getNoun from an endless search when most forms have been analyzed
   
+  /*function to get a new word to analyze: it first clears all previous entries and sets the 'check answer' to enabled
+  It randomly selects a word from the list of words and then a random form of that word. If the specific form has
+  already been succesfully analyzed, the form is skipped and getNoun is called again to continue the search*/
   const getNoun=()=>{
     clearFields();
+    toggleDisabled();
     let nounIndex = Math.ceil(Math.random()*nouns.length-1);
     let noun = nouns[nounIndex];
     let caseIndex = Math.ceil(Math.random()*9);
     let naamval = cases[caseIndex];
     let questionField = document.querySelector(".toBeAnalyzed");
-    console.log(noun[`${naamval}`]);
-    console.log(naamval);
-    console.log(noun['ablPl']);
+    //console.log(noun[`${naamval}`]);
+    //console.log(naamval);
+    //console.log(noun['ablPl']);
     if (!correct.includes(noun[`${naamval}`])) {
       questionField.innerHTML = noun[`${naamval}`];
       setWord(noun);
@@ -34,11 +38,13 @@ function App() {
         counter++;
         getNoun();
       } else {
-        console.log("Out of exercises!")
+        //console.log("Out of exercises!")
+        document.getElementById("result").innerHTML = "Bravo: I'm out of new forms to analyze!";
       }
     }
   }
 
+  //Function to clear all input- en display-fields with every new word to analyze
   const clearFields = () => {
     document.querySelector(".toBeAnalyzed").innerHTML = "";
     document.getElementById("nomSG").value = "";
@@ -48,50 +54,66 @@ function App() {
     document.getElementById("result").innerHTML = "";
   }
 
+  /* Function to disable the 'Check Answer'-button after giving a correct answer and 
+  enabling the button again with every new word to analyze */
+  const [disable, setDisable] = useState(true);
+  const toggleDisabled = () => {
+    disable === false ? setDisable(true) : setDisable(false);
+  }
+
+  //Compares the nominative singular entered by the user with the correct basis form of the given word
   const checkNominative = () => {
     let nomInput = document.getElementById("nomSG").value;
     if (nomInput === word["nomSg"]) {
-      console.log("correct");
+      //console.log("correct");
+      document.getElementById("nomSG").classList.remove("wrongInput");
       document.getElementById("nomSG").classList.add("correctInput");
       return true;
     } else {
-      console.log("wrong!")
+      //console.log("wrong!")
       document.getElementById("nomSG").classList.remove("correctInput");
+      document.getElementById("nomSG").classList.add("wrongInput");
       return false;
     }
 }
 
+//Compares the declination type selected by the user with the correct declination type of the given word
 const checkDeclination = () => {
   /* Do I have to cast it as an integer? Because in the if-statement comparing values with ===
   doesn't give the correct result; probably because the types don't match */
   let declination = document.getElementById("declination").value;
-  console.log(declination);
-  console.log(word["declination"]);
+  //console.log(declination);
+  //console.log(word["declination"]);
   if (declination == word["declination"]) {
-    console.log("correct declination");
+    //console.log("correct declination");
+    document.getElementById("declination").classList.remove("wrongInput");
     document.getElementById("declination").classList.add("correctInput");
     return true;
   } else {
-    console.log("wrong declination");
+    //console.log("wrong declination");
     document.getElementById("declination").classList.remove("correctInput");
+    document.getElementById("declination").classList.add("wrongInput");
     return false;
   }
 }
 
+//State to keep track of selected checkboxes. It starts with all checkboxes unselected
 const [checkedState, setCheckedState] = useState(
   new Array(cases.length).fill(false)
 );
 
-const [checkedCount, setCheckedCount] = useState(0);
-
+//updates the array of selected checkboxes with every selection by the user
 const handleOnChange = (position) => {
   let updatedCheckedState = checkedState.map((item, index) => index === position ? !item : item);
   setCheckedState(updatedCheckedState);
-  console.log(updatedCheckedState);
+  //console.log(updatedCheckedState);
 };
 
+//state to keep track of the number of selected checkboxes
+//not really in use, because of problems with synchronization
+const [checkedCount, setCheckedCount] = useState(0);
 const checkCount = () => {
-  console.log("Current selected cases: " + checkedState)
+  //console.log("Current selected cases: " + checkedState)
   let count = 0;
   for (let i = 0; i < checkedState.length; i++) {
     if (checkedState[i] === true) {
@@ -100,9 +122,11 @@ const checkCount = () => {
   }
   setCheckedCount(count);
   console.log("checked Count = " + checkedCount);
-  console.log("calculated count = " + count);
+  //console.log("calculated count = " + count);
   return count;
 }
+
+//Checks for words of the first declination whether number AND label of selected cases are correct
 const checkCaseFirstDecl = (naamval, count) => {
   if (naamval === "nomSg" || naamval === "ablSg") {
     if (count === 2 && checkedState[0] === true && checkedState[4] === true) {
@@ -136,6 +160,7 @@ const checkCaseFirstDecl = (naamval, count) => {
   return false
 }
 
+//Checks for Masculine words of the second declination whether number AND label of selected cases are correct
 const checkCaseSecondDeclM = (naamval, count) => {
   if (naamval === "nomSg") {
     if (count === 1 && checkedState[0] === true) {
@@ -176,6 +201,7 @@ const checkCaseSecondDeclM = (naamval, count) => {
   return false
 }
 
+//Checks for Neuter words of the second declination whether number AND label of selected cases are correct
 const checkCaseSecondDeclN = (naamval, count) => {
   if (naamval === "nomSg" || naamval === "accSg") {
     if (count === 2 && checkedState[0] === true && checkedState[3] === true) {
@@ -216,6 +242,7 @@ const checkCaseSecondDeclN = (naamval, count) => {
   return false
 }
 
+//Checks for Neuter words of the third declination whether number AND label of selected cases are correct
 const checkCaseThirdDeclN = (naamval, count) => {
   if (naamval === "nomSg" || naamval === "accSg") {
     if (count === 2 && checkedState[0] === true && checkedState[3] === true) {
@@ -249,8 +276,9 @@ const checkCaseThirdDeclN = (naamval, count) => {
   return false
 }
 
+//Checks for Masc/Fem words of the third declination whether number AND label of selected cases are correct
 const checkCaseThirdDeclMF = (naamval, count) => {
-  if (naamval === "nomSg" && word["nomSg"] === word["genSg"]) {
+  if (word["nomSg"] === word["genSg"] && (naamval === "nomSg" || naamval === "genSg")) {
     if (count === 2 && checkedState[0] === true && checkedState[1] === true) {
       console.log("cases correctly analyzed");
       return true;
@@ -282,6 +310,7 @@ const checkCaseThirdDeclMF = (naamval, count) => {
   return false
 }
 
+//Checks for Neuter words of the fourth declination whether number AND label of selected cases are correct
 const checkCaseFourthDeclN = (naamval, count) => {
   if (naamval === "nomSg" || naamval === "accSg" || naamval === "ablSg") {
     if (count === 3 && checkedState[0] === true && checkedState[3] === true && checkedState[4] === true) {
@@ -315,6 +344,7 @@ const checkCaseFourthDeclN = (naamval, count) => {
   return false
 }
 
+//Checks for Masc/Fem words of the fourth declination whether number AND label of selected cases are correct
 const checkCaseFourthDeclMF = (naamval, count) => {
   if (naamval === "nomSg" || naamval === "genSg" || naamval === "nomPl" || naamval === "accPl") {
     if (count === 4 && checkedState[0] === true && checkedState[1] === true && checkedState[5] === true && checkedState[8] === true) {
@@ -341,6 +371,7 @@ const checkCaseFourthDeclMF = (naamval, count) => {
   return false
 }
 
+//Checks for words of the fifth declination whether number AND label of selected cases are correct
 const checkCaseFifthDecl = (naamval, count) => {
   if (naamval === "nomSg" || naamval === "nomPl" || naamval === "accPl") {
     if (count === 3 && checkedState[0] === true && checkedState[5] === true && checkedState[8] === true) {
@@ -374,6 +405,7 @@ const checkCaseFifthDecl = (naamval, count) => {
   return false
 }
 
+//Selects the right function to check case and number depending on declination type and gender
 const checkCase = () => {
   let countedCases = checkCount();
   console.log("declination = " + word["declination"]);
@@ -398,24 +430,33 @@ const checkCase = () => {
     else return false;
 }
 
+/*Hook to force synchronization of the states to keep track of the number of 
+correctly analyzed forms and number of attempts */
 useEffect(() => {
   document.getElementById("correctNR").innerHTML = correctNR;
   document.getElementById("total").innerHTML = total;
-  console.log(correct);
 }, [correct, correctNR, total]);
 
+/* Uses the various functions above for the final check of the inputs, gives feedback 
+and updates the scoreboard; with a correct answer the correctly analyzed form is added 
+to the array of already analyzed forms and the 'Check Answer' button is disabled */
 const checkAnswer = () => {
   if (checkNominative() && checkDeclination() && checkCase()) {
-    console.log("Congratulations!!!");
+    //console.log("Congratulations!!!");
     setCorrect([...correct, word[naamval]]);
-    console.log(correct);
+    //console.log(correct);
     setCorrectNR(correctNR + 1)
     setTotal(total + 1);
-    document.getElementById("result").innerHTML = "Well done!"
+    document.getElementById("result").innerHTML = "Well done!";
+    document.getElementById("result").classList.remove("wrongInput");
+    document.getElementById("result").classList.add("correctInput");
+    toggleDisabled();
   } else {
-    console.log("Not quite...");
+    //console.log("Not quite...");
     setTotal(total + 1);
-    document.getElementById("result").innerHTML = "Not quite..."
+    document.getElementById("result").innerHTML = "Not quite...";
+    document.getElementById("result").classList.remove("correctInput");
+    document.getElementById("result").classList.add("wrongInput");
   }
 }
 
@@ -430,7 +471,8 @@ const checkAnswer = () => {
                      handleOnChange={handleOnChange}
                      checkCount = {checkCount} 
                      checkCase={checkCase}
-                     checkAnswer={checkAnswer} />
+                     checkAnswer={checkAnswer}
+                     disable={disable} />
     </div>
   );
 }
