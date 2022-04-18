@@ -1,8 +1,10 @@
 import {useState, useEffect} from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css';
 import data from './Data';
 import Header from './components/Header';
 import Maincomponent from './components/Maincomponent';
+import Help from './components/Help';
 
 
 function App() {
@@ -460,9 +462,23 @@ const checkAnswer = () => {
   }
 }
 
+//Opens a cheatsheet on top of the page with the declension of Latin words per declination type
+const openCheatSheet = () => {
+  document.querySelector(".cheatSheetContainer").style.display = "block";
+}
+
+//closes the cheatsheet
+const closeCheatSheet = () => {
+  document.querySelector(".cheatSheetContainer").style.display = "none";
+
+}
+
   return (
     <div className="App">
-      <Header />
+      <BrowserRouter>
+      <Header/>
+      <Routes>
+        <Route path="/" element ={
       <Maincomponent nouns={nouns} 
                      getNoun={getNoun} 
                      checkNominative={checkNominative} 
@@ -472,7 +488,13 @@ const checkAnswer = () => {
                      checkCount = {checkCount} 
                      checkCase={checkCase}
                      checkAnswer={checkAnswer}
-                     disable={disable} />
+                     disable={disable} 
+                     openCheatSheet={openCheatSheet}
+                     closeCheatSheet={closeCheatSheet}/>
+        }/>
+        <Route path="/help" element={<Help/>}/>
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }

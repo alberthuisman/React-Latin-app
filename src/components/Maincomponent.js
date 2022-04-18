@@ -87,11 +87,25 @@ export default function Maincomponent(props) {
         </form>
         
         {/*Displays a feedback comment ("not quite" or "Well done!") when checking the answer */}
-        <h4 id="result"> </h4>
+        <h4 id="result"> </h4>      
         
-        {/*With this button the user can have the answers checked 
-        with a feedback comment and changes in the scoreboard as a result*/}
-        <button disabled={props.disable} onClick={props.checkAnswer} className="checkAnswerButton">Check answer</button>
+        <div className="buttonContainer">
+       
+          {/*With this button the user can have the answers checked 
+          with a feedback comment and changes in the scoreboard as a result*/}   
+          <button disabled={props.disable} onClick={props.checkAnswer} className="checkAnswerButton">Check answer</button>
+
+          {/*Opens a cheatsheet on top of the page with all the possible endings per declination type */}       
+          <button onClick={props.openCheatSheet} className="helpButton">Help</button>
+        </div>
+        
+        {/*A cheatsheet with the declension of Latin words per declination type */}
+        <div className="cheatSheetContainer">
+          <div className="cheatSheet">
+          <img src="/Rijtjes zelfstandig naamwoord.jpg" alt=""/>
+          <button onClick={props.closeCheatSheet} className="closeButton">Close</button>
+          </div>
+        </div>
     
     </div>
   )

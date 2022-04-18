@@ -7,13 +7,21 @@
 
 .header-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
     background-image: url("https://rometips.nl/images/forum-romanum.jpg");
     background-position: center center;
     height: 80px;
     color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    font-size: large;
+
 }
 
 .maincomponent {
@@ -50,12 +58,16 @@ h4 {
     margin: 32px auto 0 auto;
 }
 
-.getNounButton, .checkAnswerButton {
+.getNounButton, 
+.checkAnswerButton,
+.helpButton,
+.closeButton {
     border-radius: 16px;
     border: none;
     background-color:orange;
     padding: 8px 16px;
     font-size: medium;
+    width: 140px;
 }
 
 form {
@@ -121,4 +133,43 @@ p {
 
 #correctNR {
     color: green;
+}
+
+.helpPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invisible {
+    display: none;
+}
+
+.buttonContainer {
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cheatSheetContainer {
+    display: none;
+    position: absolute;
+    top: 92px;
+    margin: auto;
+    z-index: 2;
+    overflow-y: scroll;
+    width: 50%;
+    height: 90%;
+    background-color: whitesmoke;
+}
+
+.cheatSheet {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cheatSheet img {
+    margin-bottom: 32px;
 }
