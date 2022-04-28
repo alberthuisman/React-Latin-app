@@ -3,7 +3,8 @@ is presented, such as the word to be analyzed, the inputfields
 for the answer of the user and the buttons to get a new word 
 or to check the answer*/
 
-import React from 'react'
+import React from 'react';
+
 
 export default function Maincomponent(props) {
   /* This variable is used to fill the checkboxes with the right 

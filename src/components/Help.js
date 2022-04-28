@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 /*Component with a cheatsheet of all the possible endingds. 
 It is meant to be presented on another page, but then the score is lost
@@ -10,6 +11,7 @@ export default function Help() {
         <h1>Declension of Latin nouns</h1>
         <h4 className="invisibles">score: <span id="correctNR">0</span> / <span id="total">0</span></h4>
         <img src="/Rijtjes zelfstandig naamwoord.jpg" alt=""/>
+        <Link to="/">Help</Link>
     </div>
   )
 }
