@@ -78,7 +78,7 @@ function App() {
       return false;
     }
 }
-
+//check?
 //Compares the declination type selected by the user with the correct declination type of the given word
 const checkDeclination = () => {
   let declination = document.getElementById("declination").value;
