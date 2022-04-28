@@ -81,8 +81,6 @@ function App() {
 
 //Compares the declination type selected by the user with the correct declination type of the given word
 const checkDeclination = () => {
-  /* Do I have to cast it as an integer? Because in the if-statement comparing values with ===
-  doesn't give the correct result; probably because the types don't match */
   let declination = document.getElementById("declination").value;
   //console.log(declination);
   //console.log(word["declination"]);
