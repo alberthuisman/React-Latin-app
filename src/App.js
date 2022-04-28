@@ -86,7 +86,7 @@ const checkDeclination = () => {
   let declination = document.getElementById("declination").value;
   //console.log(declination);
   //console.log(word["declination"]);
-  if (declination == word["declination"]) {
+  if (parseInt(declination) === word["declination"]) {
     //console.log("correct declination");
     document.getElementById("declination").classList.remove("wrongInput");
     document.getElementById("declination").classList.add("correctInput");
@@ -412,21 +412,21 @@ const checkCase = () => {
   let countedCases = checkCount();
   console.log("declination = " + word["declination"]);
   console.log(naamval);
-  if (word["declination"] == 1) {
+  if (parseInt(word["declination"]) === 1) {
     return checkCaseFirstDecl(naamval, countedCases);
-  } else if (word["declination"] == 2 && word["gender"] === "M") {
+  } else if (parseInt(word["declination"]) === 2 && word["gender"] === "M") {
     return checkCaseSecondDeclM(naamval, countedCases);
-  } else if (word["declination"] == 2 && word["gender"] === "N") {
+  } else if (parseInt(word["declination"]) === 2 && word["gender"] === "N") {
     return checkCaseSecondDeclN(naamval, countedCases); 
-  } else if (word["declination"] == 3 && word["gender"] === "N") {
+  } else if (parseInt(word["declination"]) === 3 && word["gender"] === "N") {
     return checkCaseThirdDeclN(naamval, countedCases);
-  } else if (word["declination"] == 3) {
+  } else if (parseInt(word["declination"]) === 3) {
     return checkCaseThirdDeclMF(naamval, countedCases);
-  } else if (word["declination"] == 4 && word["gender"] === "N") {
+  } else if (parseInt(word["declination"]) === 4 && word["gender"] === "N") {
     return checkCaseFourthDeclN(naamval, countedCases);
-  } else if (word["declination"] == 4) {
+  } else if (parseInt(word["declination"]) === 4) {
     return checkCaseFourthDeclMF(naamval, countedCases);
-  } else if (word["declination"] == 5) {
+  } else if (parseInt(word["declination"]) === 5) {
     return checkCaseFifthDecl(naamval, countedCases);
   }
     else return false;
