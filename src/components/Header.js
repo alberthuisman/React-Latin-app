@@ -1,9 +1,10 @@
 /* Component to build the header of the app */ 
 
-import React from 'react'
+import React from 'react';
 import {Link} from 'react-router-dom';
 
 export default function Header() {
+
   return (
     <div className="header-container">
       <Link to="/">Home</Link>

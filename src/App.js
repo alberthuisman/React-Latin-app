@@ -5,6 +5,7 @@ import data from './Data';
 import Header from './components/Header';
 import Maincomponent from './components/Maincomponent';
 import Help from './components/Help';
+import {ScoreContext} from './context/ScoreContext';
 
 
 function App() {
@@ -78,7 +79,7 @@ function App() {
       return false;
     }
 }
-//check?
+
 //Compares the declination type selected by the user with the correct declination type of the given word
 const checkDeclination = () => {
   let declination = document.getElementById("declination").value;
@@ -474,6 +475,7 @@ const closeCheatSheet = () => {
   return (
     <div className="App">
       <BrowserRouter>
+      <ScoreContext.Provider value={{correct, setCorrect, correctNR, setCorrectNR, total, setTotal}}>
       <Header/>
       <Routes>
         <Route path="/" element ={
@@ -492,6 +494,7 @@ const closeCheatSheet = () => {
         }/>
         <Route path="/help" element={<Help/>}/>
       </Routes>
+      </ScoreContext.Provider>
       </BrowserRouter>
     </div>
   );

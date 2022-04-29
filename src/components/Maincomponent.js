@@ -3,7 +3,8 @@ is presented, such as the word to be analyzed, the inputfields
 for the answer of the user and the buttons to get a new word 
 or to check the answer*/
 
-import React from 'react';
+import React, {useContext} from 'react';
+import {ScoreContext} from '../context/ScoreContext';
 
 
 export default function Maincomponent(props) {
@@ -21,6 +22,9 @@ export default function Maincomponent(props) {
               "accusative plural",
               "ablative plural"];
 
+  const {correctNR} = useContext(ScoreContext);
+  const {total} = useContext(ScoreContext);
+  
   return (
     <div className="maincomponent">
         
@@ -30,7 +34,7 @@ export default function Maincomponent(props) {
         <div className="wordGenerator">
           <div className="scorePlusNewBtn">
             <button onClick={props.getNoun} className="getNounButton">New Noun</button>
-            <h4>score: <span id="correctNR">0</span> / <span id="total">0</span></h4>
+            <h4>score: <span id="correctNR">{correctNR}</span> / <span id="total">{total}</span></h4>
             </div>
             <p className="toBeAnalyzed"></p>
         </div>
