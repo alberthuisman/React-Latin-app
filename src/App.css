@@ -78,6 +78,17 @@ h4 {
     font-family: 'Lato', sans-serif;
 }
 
+.checkAnswerButton-disabled {
+    border-radius: 16px;
+    border: none;
+    background-color:orange;
+    color: #1010104D;
+    padding: 8px 16px;
+    font-size: medium;
+    width: 140px;
+    font-family: 'Lato', sans-serif;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -172,9 +183,10 @@ p {
     margin: auto;
     z-index: 2;
     overflow-y: scroll;
-    width: 65%;
-    height: 90%;
+    width: 600px;
+    height: 100%;
     background-color: whitesmoke;
+    padding-bottom: 64px;
 }
 
 .cheatSheet {
@@ -186,5 +198,5 @@ p {
 
 .cheatSheet img {
     margin-bottom: 32px;
-    width: 50%;
+    width: 60%;
 }

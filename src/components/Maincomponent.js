@@ -98,7 +98,7 @@ export default function Maincomponent(props) {
        
           {/*With this button the user can have the answers checked 
           with a feedback comment and changes in the scoreboard as a result*/}   
-          <button disabled={props.disable} onClick={props.checkAnswer} className="checkAnswerButton">Check answer</button>
+          <button disabled={props.disable} onClick={props.checkAnswer} className={props.disable === true ? "checkAnswerButton-disabled" : "checkAnswerButton"}>Check answer</button>
 
           {/*Opens a cheatsheet on top of the page with all the possible endings per declination type */}       
           <button onClick={props.openCheatSheet} className="helpButton">Help</button>
@@ -107,8 +107,9 @@ export default function Maincomponent(props) {
         {/*A cheatsheet with the declension of Latin words per declination type */}
         <div className="cheatSheetContainer">
           <div className="cheatSheet">
-          <img src="/Rijtjes zelfstandig naamwoord.jpg" alt=""/>
-          <button onClick={props.closeCheatSheet} className="closeButton">Close</button>
+            <h1>Cheat Sheet</h1>
+            <img src="/Rijtjes zelfstandig naamwoord.jpg" alt=""/>
+            <button onClick={props.closeCheatSheet} className="closeButton">Close</button>
           </div>
         </div>
     
