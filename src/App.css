@@ -183,7 +183,9 @@ p {
     margin: auto;
     z-index: 2;
     overflow-y: scroll;
-    width: 600px;
+    width: 90%;
+    min-width: 340px;
+    max-width: 600px;
     height: 100%;
     background-color: whitesmoke;
     padding-bottom: 64px;
@@ -198,5 +200,6 @@ p {
 
 .cheatSheet img {
     margin-bottom: 32px;
-    width: 60%;
+    min-width: 250px;
+    max-width: 310px;
 }
