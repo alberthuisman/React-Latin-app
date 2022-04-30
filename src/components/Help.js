@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import {Link} from 'react-router-dom';
 import {ScoreContext} from '../context/ScoreContext';
 
 /*Component with a cheatsheet of all the possible endings. */
