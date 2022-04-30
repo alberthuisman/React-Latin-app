@@ -36,7 +36,7 @@ export default function Maincomponent(props) {
             <button onClick={props.getNoun} className="getNounButton">New Noun</button>
             <h4>score: <span id="correctNR">{correctNR}</span> / <span id="total">{total}</span></h4>
             </div>
-            <p className="toBeAnalyzed"></p>
+            <p className="toBeAnalyzed"><em id="advice">click on "new noun"</em></p>
         </div>
         
         <form>

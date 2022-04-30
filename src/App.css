@@ -42,7 +42,7 @@ h4 {
 }
 
 .wordGenerator {
-    width: 70%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     margin: 32px auto auto auto;
@@ -58,10 +58,23 @@ h4 {
     align-items: center;
 }
 
+#advice {
+    font-weight: light;
+    font-style: italic;
+    color: grey;
+    font-size: small;
+}
+
 .toBeAnalyzed {
     font-weight: bold;
     height: 20px;
-    margin: 32px auto 0 auto;
+    margin: 16px auto 0 auto;
+    width: 150px;
+    border: solid 1px white;
+    background-color: white;
+    border-radius: 16px;
+    text-align: center;
+    padding: 8px 0;
 }
 
 .getNounButton, 
@@ -101,7 +114,7 @@ form {
 #nomSG {
     padding: 4px 4px;
     border-radius: 8px;
-    border: 0.5px solid orange;
+    border: 0.5px solid lightgrey;
 }
 
 .case {
@@ -132,7 +145,7 @@ p {
 #declination {
     padding: 4px 0;
     border-radius: 8px;
-    border: 0.5px solid orange;
+    border: 0.5px solid lightgrey;
 }
 
 .correctInput {
