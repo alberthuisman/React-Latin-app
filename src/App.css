@@ -23,7 +23,6 @@
 a {
     text-decoration: none;
     color: white;
-    background-color: rgb(222,170,135,0.4);
     font-weight: bolder;
     font-size: large;
     padding: 2px 10px;
@@ -72,6 +71,7 @@ h4 {
     border-radius: 16px;
     border: none;
     background-color:orange;
+    color: black;
     padding: 8px 16px;
     font-size: medium;
     width: 140px;
