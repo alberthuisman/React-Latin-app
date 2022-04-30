@@ -3,7 +3,8 @@
     max-width: 600px;
     margin: auto;
     background-color: whitesmoke;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     font-family: 'Lato', sans-serif;
 }
 
@@ -148,14 +149,20 @@ p {
     align-items: center;
 }
 
+.helpTitle {
+    text-align: center;
+    width: 70%;
+}
+
 .invisible {
     display: none;
 }
 
 .buttonContainer {
-    width: 70%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 16px;
 }
 
 .cheatSheetContainer {
