@@ -42,7 +42,7 @@ function App() {
         getNoun();
       } else {
         //console.log("Out of exercises!")
-        document.getElementById("result").innerHTML = "Bravo: I'm out of new forms to analyze!";
+        document.getElementById("result").innerHTML = "Bravo: I'm out of new forms to analyse!";
       }
     }
   }
@@ -475,7 +475,7 @@ const closeCheatSheet = () => {
   return (
     <div className="App">
       <BrowserRouter>
-      <ScoreContext.Provider value={{correct, setCorrect, correctNR, setCorrectNR, total, setTotal}}>
+      <ScoreContext.Provider value={{correct, setCorrect, correctNR, setCorrectNR, total, setTotal, naamval, setNaamval, word, setWord}}>
       <Header/>
       <Routes>
         <Route path="/" element ={

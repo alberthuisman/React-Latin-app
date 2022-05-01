@@ -24,6 +24,8 @@ export default function Maincomponent(props) {
 
   const {correctNR} = useContext(ScoreContext);
   const {total} = useContext(ScoreContext);
+  const {naamval} = useContext(ScoreContext);
+  const {word} = useContext(ScoreContext);
   
   return (
     <div className="maincomponent">
@@ -34,9 +36,10 @@ export default function Maincomponent(props) {
         <div className="wordGenerator">
           <div className="scorePlusNewBtn">
             <button onClick={props.getNoun} className="getNounButton">New Noun</button>
-            <h4>score: <span id="correctNR">{correctNR}</span> / <span id="total">{total}</span></h4>
+            <h4 id="score">score: <span id="correctNR">{correctNR}</span> / <span id="total">{total}</span></h4>
             </div>
-            <p className="toBeAnalyzed"><em id="advice">click on "new noun"</em></p>
+            {/*<p className="toBeAnalyzed"><em id="advice">click on "new noun"</em></p>*/}
+            <p className={word === "" ? "toBeAnalyzed advice" : "toBeAnalyzed"}>{word === "" ? "click on 'new noun'" : word[naamval]}</p>
         </div>
         
         <form>

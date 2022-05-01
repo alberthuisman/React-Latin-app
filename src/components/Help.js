@@ -9,7 +9,7 @@ export default function Help() {
   return (
     <div className="helpPage">
         <h1 className="helpTitle">Declension of Latin nouns</h1>
-        <h4 className="invisibles">score: <span id="correctNR">{correctNR}</span> / <span id="total">{total}</span></h4>
+        <h4 className="invisible">score: <span id="correctNR">{correctNR}</span> / <span id="total">{total}</span></h4>
         <img src="/Rijtjes zelfstandig naamwoord.jpg" alt=""/>
     </div>
   )
