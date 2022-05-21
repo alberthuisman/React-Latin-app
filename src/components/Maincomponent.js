@@ -110,12 +110,12 @@ export default function Maincomponent(props) {
         <div className = "cheatSheetContainer">
           <div className = "emperorInfo">
             <h1>Roman Emperors</h1>
-            <h3 id="name"></h3>
+            <h3 id="name"> </h3>
             <img id="emperorImage" src="" alt=""/>
-            <p id="fullName"></p>
-            <p id="reignStart"></p>
-            <p id="deathCause"></p>
-            <p id="killer"></p>
+            <p id="fullName"> </p>
+            <p id="reignStart"> </p>
+            <p id="deathCause"> </p>
+            <p id="killer"> </p>
             <div className = "buttonContainer">
             <button onClick={props.closeCheatSheet} className="closeButton">Close</button>
             <button onClick={props.getEmperorInfo} className="closeButton">New Emperor</button>
