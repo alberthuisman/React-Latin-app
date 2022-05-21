@@ -104,7 +104,7 @@ export default function Maincomponent(props) {
           <button disabled={props.disable} onClick={props.checkAnswer} className={props.disable === true ? "checkAnswerButton-disabled" : "checkAnswerButton"}>Check answer</button>
 
           {/*Opens a cheatsheet on top of the page with all the possible endings per declination type */}       
-          <button onClick={props.openCheatSheet} className="helpButton">Help</button>
+          <button onClick={props.openCheatSheet} className="helpButton">Fun Fact</button>
         </div>
         
         <div className = "cheatSheetContainer">
