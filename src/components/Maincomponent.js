@@ -107,14 +107,29 @@ export default function Maincomponent(props) {
           <button onClick={props.openCheatSheet} className="helpButton">Help</button>
         </div>
         
-        {/*A cheatsheet with the declension of Latin words per declination type */}
+        <div className = "cheatSheetContainer">
+          <div className = "emperorInfo">
+            <h1>Roman Emperors</h1>
+            <h3 id="name"></h3>
+            <img id="emperorImage" src="" alt=""/>
+            <p id="fullName"></p>
+            <p id="reignStart"></p>
+            <p id="deathCause"></p>
+            <p id="killer"></p>
+            <div className = "buttonContainer">
+            <button onClick={props.closeCheatSheet} className="closeButton">Close</button>
+            <button onClick={props.getEmperorInfo} className="closeButton">New Emperor</button>
+            </div>
+          </div>
+        </div>
+        {/*A cheatsheet with the declension of Latin words per declination type 
         <div className="cheatSheetContainer">
           <div className="cheatSheet">
             <h1>Cheat Sheet</h1>
             <img src="/Rijtjes zelfstandig naamwoord.jpg" alt=""/>
             <button onClick={props.closeCheatSheet} className="closeButton">Close</button>
           </div>
-        </div>
+        </div>*/}
     
     </div>
   )

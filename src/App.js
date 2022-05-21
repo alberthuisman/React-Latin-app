@@ -464,12 +464,35 @@ const checkAnswer = () => {
 //Opens a cheatsheet on top of the page with the declension of Latin words per declination type
 const openCheatSheet = () => {
   document.querySelector(".cheatSheetContainer").style.display = "block";
+  getEmperorInfo();
 }
 
 //closes the cheatsheet
 const closeCheatSheet = () => {
   document.querySelector(".cheatSheetContainer").style.display = "none";
 
+}
+
+const getEmperorInfo = () => {
+  let randomNumber = Math.ceil(Math.random()*67);
+  fetch("https://documentation-resources.opendatasoft.com/api/records/1.0/search/?dataset=roman-emperors&q=&rows=68&facet=birth_cty&facet=birth_prv&facet=cause&facet=killer&facet=dynasty&facet=era")
+  .then(response => response.json())
+  .then(data => {
+    let emperor = data.records[randomNumber].fields.name;
+    let emperorFull = data.records[randomNumber].fields.name_full;
+    let image = data.records[randomNumber].fields.image;
+    let reignStart = data.records[randomNumber].fields.reign_start.split('-')[0];
+    let reignEnd = data.records[randomNumber].fields.reign_end.split('-')[0];
+    let deathCause = data.records[randomNumber].fields.cause;
+    let deathKiller = data.records[randomNumber].fields.killer;
+    document.getElementById("name").innerHTML = emperor;
+    document.getElementById("emperorImage").src=image;
+    document.getElementById("fullName").innerHTML = emperorFull;
+    document.getElementById("reignStart").innerHTML="from: " + reignStart + " to " + reignEnd;
+    document.getElementById("deathCause").innerHTML = "cause of death: " + deathCause;
+    document.getElementById("killer").innerHTML = "killer: " + deathKiller;
+  })
+  .catch(error => console.log(error))
 }
 
   return (
@@ -490,7 +513,8 @@ const closeCheatSheet = () => {
                      checkAnswer={checkAnswer}
                      disable={disable} 
                      openCheatSheet={openCheatSheet}
-                     closeCheatSheet={closeCheatSheet}/>
+                     closeCheatSheet={closeCheatSheet}
+                     getEmperorInfo={getEmperorInfo}/>
         }/>
         <Route path="/help" element={<Help/>}/>
       </Routes>
