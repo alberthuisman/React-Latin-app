@@ -238,6 +238,11 @@ p {
     text-align: center;
 }
 
+#fullName {
+    min-width: 250px;
+    max-width: 310px;
+}
+
 #killer {
     margin-bottom: 32px;
 }
